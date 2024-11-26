@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUI Sederhana dengan Tabel yang Menarik</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            margin: 30px auto;
+            border-collapse: collapse;
+            width: 60%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 18px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daftar Data</h1>
+        <p>Klik tombol di bawah untuk menampilkan data dalam tabel:</p>
+        <button onclick="tampilkanTabel()">Tampilkan Tabel</button>
+        <table id="tabelData" style="display: none;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const model = [
+            { Id: 1, nama: 'Satu' },
+            { Id: 2, nama: 'Dua' },
+            { Id: 3, nama: 'Tiga' }
+        ];
+
+        function tampilkanTabel() {
+            const tabel = document.getElementById('tabelData');
+            const tbody = tabel.querySelector('tbody');
+
+            // Kosongkan isi tabel sebelumnya
+            tbody.innerHTML = '';
+
+            // Tampilkan data dari model ke tabel
+            model.forEach(item => {
+                const row = document.createElement('tr');
+                const cellId = document.createElement('td');
+                const cellNama = document.createElement('td');
+
+                cellId.textContent = item.Id;
+                cellNama.textContent = item.nama;
+
+                row.appendChild(cellId);
+                row.appendChild(cellNama);
+                tbody.appendChild(row);
+            });
+
+            // Tampilkan tabel
+            tabel.style.display = 'table';
+        }
+    </script>
+</body>
+</html>
